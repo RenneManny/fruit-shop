@@ -10,7 +10,12 @@ export const signUp = async (req, res) => {
    console.log(req.body,"trycatch")
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
-      return res.status(409).json({ success: false, message: "User already exists!" });
+      return res.json({
+        success: false,
+        message: "User already exist",
+        body: {},
+        status:404
+      });
     }
 
 // const imageUpload=

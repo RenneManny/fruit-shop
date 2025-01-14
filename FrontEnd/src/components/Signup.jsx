@@ -1,7 +1,34 @@
 import React, { useState, useEffect } from 'react';
-
+import axios from "axios"
+import routingApi from './routing/routes';
+import { toast } from 'react-toastify';
 function Signup() {
   const [showModal, setShowModal] = useState(true);  // Modal is shown by default
+  const [data,setData]=useState("")
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    setData({
+        ...data,  
+        [e.target.name]: e.target.value  
+    });
+};
+const handleSubmit=async(e)=>{
+try {
+  e.preventDefault()
+const response=await axios.post(routingApi.signup.url,data)
+console.log(response,"This is response ")
+if(response.data.status===200){
+  setData(response.data.body);
+  toast.success(response.data.message)
+}
+else{
+  toast.error(response.data.message)
+}
+
+} catch (error) {
+  console.log(error)
+}
+}
 
   useEffect(() => {
     // When the component mounts, show the modal
@@ -44,7 +71,7 @@ function Signup() {
               ></button>
             </div>
             <div className="modal-body p-4">
-              <form>
+              <form onSubmit={handleSubmit}>
                 {/* Full Name */}
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label text-muted fw-medium">
@@ -57,6 +84,7 @@ function Signup() {
                     id="name"
                     placeholder="Enter your full name"
                     required
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -72,6 +100,7 @@ function Signup() {
                     id="email"
                     placeholder="Enter your email"
                     required
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -87,6 +116,7 @@ function Signup() {
                     id="password"
                     placeholder="Create a strong password"
                     required
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -102,6 +132,7 @@ function Signup() {
                     id="confirmPassword"
                     placeholder="Re-enter your password"
                     required
+                    onChange={handleChange}
                   />
                 </div>
 

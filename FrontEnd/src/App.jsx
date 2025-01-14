@@ -13,10 +13,12 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import UserTable from "./components/UserTable";
 import AdminDashboard from "./components/AdminDashboard";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <div>
+      
       <Routes>
         <Route path="signup" element={<Signup />} />
         <Route path="login" element={<Login />} />
@@ -33,6 +35,7 @@ function App() {
           <Route path="dashboard" element={<AdminDashboard />} />
         </Route>
       </Routes>
+      <ToastContainer/>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [showModal, setShowModal] = useState(true);  // Modal is shown by default
@@ -88,9 +89,8 @@ function Login() {
                 <div className="text-center mt-4">
                   <p className="text-muted mb-0">
                     Don't have an account?{' '}
-                    <a href="#!" className="text-primary">
-                      Sign Up
-                    </a>
+                    <Link  className="text-primary"to={"/signup"}> Sign Up</Link>
+                   
                   </p>
                 </div>
               </form>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from "react-router-dom"
 function Navbar() {
   return (
     <>
@@ -57,21 +57,26 @@ function Navbar() {
                 <span className="fs-6 text-muted">For Support?</span>
                 <h5 className="mb-0">+980-34984089</h5>
               </div>
-              <ul className="d-flex justify-content-end list-unstyled m-0">
+              <ul className="d-flex justify-content-end list-unstyled m-0 gap-3">
+                
+                <Link to={"/login"} >
                 <li>
-                  <a href="#" className="rounded-circle bg-light p-2 mx-1">
-                    <svg width={24} height={24} viewBox="0 0 24 24">
-                      <use xlinkHref="#user" />
-                    </svg>
-                  </a>
+                <i class="fa-solid fa-user"></i>
+                  
+                </li></Link>
+                <Link to={"/cart"}> <li>
+                <i class="fa-solid fa-cart-shopping"></i>
+                  
+                </li></Link>
+               <Link to={"/dashboard"}>
+               <li>
+                  <i class="fa-solid fa-gauge"></i>
                 </li>
-                <li>
-                  <a href="#" className="rounded-circle bg-light p-2 mx-1">
-                    <svg width={24} height={24} viewBox="0 0 24 24">
-                      <use xlinkHref="#heart" />
-                    </svg>
-                  </a>
-                </li>
+               </Link>
+               <Link to={"/logout"}><li>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                </li></Link>
+                
                 <li className="d-lg-none">
                   <a
                     href="#"
@@ -85,6 +90,10 @@ function Navbar() {
                     </svg>
                   </a>
                 </li>
+                <li>
+
+                </li>
+                
                 <li className="d-lg-none">
                   <a
                     href="#"
@@ -99,7 +108,7 @@ function Navbar() {
                   </a>
                 </li>
               </ul>
-              <div className="cart text-end d-none d-lg-block dropdown">
+              {/* <div className="cart text-end d-none d-lg-block dropdown">
                 <button
                   className="border-0 bg-transparent d-flex flex-column gap-2 lh-1"
                   type="button"
@@ -112,7 +121,7 @@ function Navbar() {
                   </span>
                   <span className="cart-total fs-5 fw-bold">$1290.00</span>
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
